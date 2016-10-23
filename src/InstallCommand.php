@@ -42,6 +42,9 @@ class InstallCommand extends Command
 
         // create user root
         $this->createUserRoot();
+
+        // publish assets
+        $this->publishAssets();
     }
 
     protected function createUserRoot()
@@ -63,6 +66,18 @@ class InstallCommand extends Command
             } catch (\Exception $e) {
                 $this->error('Gagal membuat user root');
             }
+        }
+    }
+
+    protected function publishAssets()
+    {
+        if ($this->confirm('Apakah akan mempublish assets?')) {
+            $this->callSilent('vendor:publish', [
+                '--tag' => 'public',
+                '--force' => true
+            ]);
+
+            $this->info('Published!');
         }
     }
 }

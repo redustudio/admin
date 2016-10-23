@@ -42,7 +42,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->registerConfigurations();
         $this->registerCommands();
 
-        if(! $this->app->routesAreCached() && config('admin.routes')) {
+        if(! $this->app->routesAreCached() && config('reduvel.admin.route.enabled')) {
             $this->registerRoutes();
         }
     }
@@ -63,10 +63,10 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected function registerViews()
     {
-        $this->loadViewsFrom($this->packagePath('resources/views'), 'admin');
+        $this->loadViewsFrom($this->packagePath('resources/views'), 'reduvel.admin');
 
         $this->publishes([
-            $this->packagePath('resources/views') => base_path('resources/views/reduvel/admin'),
+            $this->packagePath('resources/views') => resource_path('views/vendor/reduvel/admin'),
         ], 'views');
     }
 
@@ -104,7 +104,7 @@ class ServiceProvider extends BaseServiceProvider
     protected function registerAssets()
     {
         $this->publishes([
-            $this->packagePath('resources/assets') => public_path('reduvel/admin'),
+            $this->packagePath('resources/assets') => public_path('vendor/reduvel/admin'),
         ], 'public');
     }
 
@@ -141,9 +141,13 @@ class ServiceProvider extends BaseServiceProvider
     protected function registerRoutes()
     {
         $this->app['router']->group([
-            'namespace' => __NAMESPACE__
+            'namespace' => __NAMESPACE__ . '\Http\Controllers'
         ], function($router) {
-
+            $router->group([
+                'middleware' => config('reduvel.admin.route.web.middlewares')
+            ], function($router) {
+                require $this->packagePath('routes/web.php');
+            });
         });
     }
 

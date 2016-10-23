@@ -3,7 +3,14 @@ use App\User;
 
 return [
     // automatic loading of routes through main service provider
-    'routes' => true,
+    'route' => [
+        'enabled' => true,
+
+        'web' => [
+            'index' => '/dashboard',
+            'middlewares' => ['web']
+        ]
+    ],
 
     'user' => [
         'model' => User::class
