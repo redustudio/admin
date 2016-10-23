@@ -4,7 +4,7 @@ Admin panel for your Laravel App.
 
 ## About Reduvel
 
-Reduvel is a open source project from [ReduStudio][homepage]
+Reduvel is an open source project from [ReduStudio][homepage]
 
 ### About ReduStudio
 
