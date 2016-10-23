@@ -5,7 +5,7 @@
         @include('reduvel.admin::elements.sidebar')
         <div id="page-content-wrapper">
             @include('reduvel.admin::elements.topbar')
-            <div class="container-fluid" style="margin-top: 15px;">
+            <div class="container-fluid">
                 @yield('content')
             </div>
         </div>
