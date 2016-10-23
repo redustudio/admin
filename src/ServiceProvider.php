@@ -49,11 +49,11 @@ class ServiceProvider extends BaseServiceProvider
 
     protected function registerCommands()
     {
-        $this->app->bind('reduvel:admin:install', function($app) {
-            return new InstallCommand();
-        });
-
-        $this->commands('reduvel:admin:install');
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                InstallCommand::class
+            ]);
+        }
     }
 
     /**

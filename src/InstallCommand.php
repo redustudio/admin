@@ -51,7 +51,7 @@ class InstallCommand extends Command
 
             $name = $this->ask('Name for root?', 'Root');
             $email = $this->ask('Email for root?', 'root@example.com');
-            $password = $this->secret('Password for root?', 'password');
+            $password = $this->secret('Password for root?');
 
             try {
                 $user = $model::firstOrNew(['email' => $email]);
