@@ -46,10 +46,6 @@ This artisan command for running migrations and create user root.
 
 Coming soon
 
-### Events
-
-Coming soon
-
 ## Troubleshooting
 
 Coming soon
