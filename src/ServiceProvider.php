@@ -108,7 +108,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected function registerTranslations()
     {
-        $this->loadTranslationsFrom($this->packagePath('resources/lang'), 'reduvel.admin');
+        $this->loadTranslationsFrom($this->packagePath('resources/lang'), 'reduvel-admin');
     }
 
     /**
