@@ -6,10 +6,7 @@ Admin panel for your Laravel App.
 
 - [Installation](#installation)
 - [Configuration](#configuration)
-    - [Vendor publish](vendor-publish)
-    - [Running install command](#running-install-command)
 - [Usage](#usage)
-    - [Events](#events)
 - [Troubleshooting](#troubleshooting)
 - [License](#license)
 
@@ -23,22 +20,27 @@ In order to install Reduvel Admin, just add
 
 to your composer.json, then run `composer install` or `composer update`.
 
-Then in your `config/app.php` after `// Package Service Providers` comment, add
+After installed,  add the ServiceProvider to the providers array in `config/app.php`
 
-    Reduvel\Admin\ServiceProvider::class,
-
+```php
+Reduvel\Admin\ServiceProvider::class,
+```
 
 ## Configuration
 
-Coming soon
+Running artisan command from this package
 
-### Vendor publish
+```bash
+$ php artisan reduvel:admin:publish
+```
 
-Coming soon
+This artisan command for publishing assets package, like migrations, config, views, and assets (css & js).
 
-### Running install command
+```bash
+$ php artisan reduvel:admin:install
+```
 
-Coming soon
+This artisan command for running migrations and create user root.
 
 ## Usage
 
