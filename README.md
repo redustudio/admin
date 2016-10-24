@@ -26,8 +26,6 @@ After installed,  add the ServiceProvider to the providers array in `config/app.
 Reduvel\Admin\ServiceProvider::class,
 ```
 
-## Configuration
-
 Running artisan command from this package
 
 ```bash
@@ -41,6 +39,10 @@ $ php artisan reduvel:admin:install
 ```
 
 This artisan command for running migrations and create user root.
+
+## Configuration
+
+Coming soon
 
 ## Usage
 
