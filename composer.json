@@ -1,6 +1,6 @@
 {
     "name": "reduvel/admin",
-    "description": ":package_description",
+    "description": "Admin panel for your Laravel App.",
     "keywords": [
         "laravel",
         "reduvel",
@@ -10,14 +10,14 @@
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": ":author_website",
+            "name": "Ramadani",
+            "email": "email.ramadani@gmail.com",
+            "homepage": "http://ramadani.id/",
             "role": "Developer"
         }
     ],
     "require": {
-        "php" : ">=5.5.0",
+        "php" : ">=5.6.4",
         "illuminate/support": "~5.2"
     },
     "require-dev": {
