@@ -3,6 +3,8 @@
 namespace Reduvel\Admin;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use Reduvel\Admin\Commands\PublishCommand;
+use Reduvel\Admin\Commands\InstallCommand;
 
 /**
  * Class PackageServiceProvider
@@ -25,6 +27,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
+        //
     }
 
     /**
@@ -36,11 +39,14 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->registerViews();
         $this->registerMigrations();
-        $this->registerSeeds();
         $this->registerAssets();
         $this->registerTranslations();
         $this->registerConfigurations();
         $this->registerCommands();
+
+        if ($this->app->runningInConsole()) {
+            $this->registerCommands();
+        }
 
         if (! $this->app->routesAreCached() && config('reduvel.admin.route.enabled')) {
             $this->registerRoutes();
@@ -49,11 +55,10 @@ class ServiceProvider extends BaseServiceProvider
 
     protected function registerCommands()
     {
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                InstallCommand::class
-            ]);
-        }
+        $this->commands([
+            PublishCommand::class,
+            InstallCommand::class
+        ]);
     }
 
     /**
@@ -63,10 +68,10 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected function registerViews()
     {
-        $this->loadViewsFrom($this->packagePath('resources/views'), 'reduvel.admin');
+        $this->loadViewsFrom($this->packagePath('resources/views'), 'reduvel-admin');
 
         $this->publishes([
-            $this->packagePath('resources/views') => resource_path('views/vendor/reduvel/admin'),
+            $this->packagePath('resources/views') => resource_path('views/vendor/reduvel-admin'),
         ], 'views');
     }
 
@@ -82,18 +87,6 @@ class ServiceProvider extends BaseServiceProvider
         $this->publishes([
             $this->packagePath('database/migrations') => database_path('/migrations')
         ], 'migrations');
-    }
-
-    /**
-     * Register the package database seeds
-     *
-     * @return void
-     */
-    protected function registerSeeds()
-    {
-        $this->publishes([
-            $this->packagePath('database/seeds') => database_path('/seeds')
-        ], 'seeds');
     }
 
     /**

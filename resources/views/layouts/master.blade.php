@@ -1,10 +1,10 @@
-@extends('reduvel.admin::layouts.base')
+@extends('reduvel-admin::layouts.base')
 
 @section('body')
     <div id="wrapper">
-        @include('reduvel.admin::elements.sidebar')
+        @include('reduvel-admin::elements.sidebar')
         <div id="page-content-wrapper">
-            @include('reduvel.admin::elements.topbar')
+            @include('reduvel-admin::elements.topbar')
             <div class="container-fluid">
                 @yield('content')
             </div>

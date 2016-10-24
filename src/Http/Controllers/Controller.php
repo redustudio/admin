@@ -8,6 +8,6 @@ class Controller extends BaseController
 {
     public function index()
     {
-        return view('reduvel.admin::layouts.master');
+        return view('reduvel-admin::layouts.master');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Reduvel\Admin;
+namespace Reduvel\Admin\Commands;
 
 use Illuminate\Console\Command;
 
@@ -18,7 +18,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Install Reduvel Admin, included migrations, user root, and publish assets';
+    protected $description = 'Install Reduvel Admin, included running migrations and create user root';
 
     /**
      * Create a new command instance.
@@ -38,13 +38,10 @@ class InstallCommand extends Command
     public function handle()
     {
         // migrate setup_users_table
-        $this->callSilent('migrate');
+        $this->call('migrate');
 
         // create user root
         $this->createUserRoot();
-
-        // publish assets
-        $this->publishAssets();
     }
 
     protected function createUserRoot()
@@ -66,18 +63,6 @@ class InstallCommand extends Command
             } catch (\Exception $e) {
                 $this->error('Gagal membuat user root');
             }
-        }
-    }
-
-    protected function publishAssets()
-    {
-        if ($this->confirm('Apakah akan mempublish assets?')) {
-            $this->callSilent('vendor:publish', [
-                '--tag' => 'public',
-                '--force' => true
-            ]);
-
-            $this->info('Published!');
         }
     }
 }
