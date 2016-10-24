@@ -42,7 +42,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->registerConfigurations();
         $this->registerCommands();
 
-        if(! $this->app->routesAreCached() && config('reduvel.admin.route.enabled')) {
+        if (! $this->app->routesAreCached() && config('reduvel.admin.route.enabled')) {
             $this->registerRoutes();
         }
     }
@@ -126,7 +126,8 @@ class ServiceProvider extends BaseServiceProvider
     protected function registerConfigurations()
     {
         $this->mergeConfigFrom(
-            $this->packagePath('config/config.php'), 'reduvel.admin'
+            $this->packagePath('config/config.php'),
+            'reduvel.admin'
         );
         $this->publishes([
             $this->packagePath('config/config.php') => config_path('reduvel/admin.php'),
@@ -142,10 +143,10 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->app['router']->group([
             'namespace' => __NAMESPACE__ . '\Http\Controllers'
-        ], function($router) {
+        ], function ($router) {
             $router->group([
                 'middleware' => config('reduvel.admin.route.web.middlewares')
-            ], function($router) {
+            ], function ($router) {
                 require $this->packagePath('routes/web.php');
             });
         });
@@ -159,6 +160,6 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected function packagePath($path = '')
     {
-        return sprintf("%s/../%s", __DIR__ , $path);
+        return sprintf("%s/../%s", __DIR__, $path);
     }
 }
