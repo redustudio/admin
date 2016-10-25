@@ -12,7 +12,7 @@
 
         <ul class="nav navbar-nav float-xs-right">
             <li class="nav-item">
-                <a href="#" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Logout">
+                <a href="{{ route('reduvel-admin:logout') }}" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Logout">
                     <i class="fa fa-sign-out"></i>
                 </a>
             </li>
