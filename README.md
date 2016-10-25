@@ -2,14 +2,6 @@
 
 Admin panel for your Laravel App.
 
-## Contents
-
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Troubleshooting](#troubleshooting)
-- [License](#license)
-
 ## Installation
 
 This package requires [Laravel 5.3][laravel-install-link] to install.
@@ -45,10 +37,6 @@ This artisan command for running migrations and create user root.
 Coming soon
 
 ## Usage
-
-Coming soon
-
-## Troubleshooting
 
 Coming soon
 
