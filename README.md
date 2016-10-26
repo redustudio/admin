@@ -62,6 +62,23 @@ You can write it on Service Provider or Controller constructor.
 
 ### Events
 
+You can use this event for example recording user activity, call other functionality, etc.
+
+Event Name | Parameter(s)
+--- | ---
+reduvel.admin.login | $user
+reduvel.admin.logout | $user
+
+### Others
+
+Set title for page
+
+```php
+view()->share('pageTitle', 'Dashboard');
+```
+
+You can write it on every Controller method which displays the page.
+
 ## About Reduvel
 
 Reduvel is an open source project from [ReduStudio][homepage]
