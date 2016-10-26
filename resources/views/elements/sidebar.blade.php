@@ -29,11 +29,27 @@
 
         <p class="nav-title">NAVIGATION</p>
         <ul class="nav" id="navmenu">
-            <li>
-                <a href="{{ route('reduvel-admin:index') }}" class="truncate">
-                    <i class="fa fa-dashboard"></i> Dashboard
-                </a>
+        @foreach (app('reduvel.admin.menu')->roots() as $menu)
+            <li @if($menu->hasChildren()) class="card panel" @endif>
+                @if ($menu->hasChildren())
+                    <a data-toggle="collapse" class="truncate" data-parent="#navmenu" href="#{{ $menu->id }}-collapse" aria-expanded="false" aria-controls="{{ $menu->id }}-collapse">
+                        <i class="{{ $menu->data('icon') }}"></i> {{ $menu->title }}
+                    </a>
+
+                    <ul class="collapse sub-menu" id="{{ $menu->id }}-collapse">
+                    @foreach ($menu->children() as $subMenu)
+                        <li>
+                            <a href="{{ $subMenu->url() }}">{{ $subMenu->title }}</a>
+                        </li>
+                    @endforeach
+                    </ul>
+                @else
+                    <a href="{{ $menu->url() }}" class="truncate">
+                        <i class="{{ $menu->data('icon') }}"></i> {{ $menu->title }}
+                    </a>
+                @endif
             </li>
+        @endforeach
         </ul>
     </nav>
 </div>

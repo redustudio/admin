@@ -3,6 +3,7 @@
 namespace Reduvel\Admin;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use Lavary\Menu\Builder;
 use Reduvel\Admin\Commands\PublishCommand;
 use Reduvel\Admin\Commands\InstallCommand;
 
@@ -27,7 +28,10 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        //
+        $this->mergeConfigFrom($this->packagePath('config/config.php'), 'reduvel.admin');
+
+        $this->registerProviders();
+        $this->registerMenus();
     }
 
     /**
@@ -38,13 +42,12 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->registerViews();
-        $this->registerMigrations();
         $this->registerAssets();
         $this->registerTranslations();
         $this->registerConfigurations();
-        $this->registerCommands();
 
         if ($this->app->runningInConsole()) {
+            $this->registerMigrations();
             $this->registerCommands();
         }
 
@@ -53,12 +56,45 @@ class ServiceProvider extends BaseServiceProvider
         }
     }
 
+    /**
+     * Register the package commands
+     *
+     * @return void
+     */
     protected function registerCommands()
     {
         $this->commands([
             PublishCommand::class,
             InstallCommand::class
         ]);
+    }
+
+    /**
+     * Register the package providers
+     *
+     * @return void
+     */
+    protected function registerProviders()
+    {
+        $providers = config('reduvel.admin.providers');
+
+        foreach ($providers as $provider) {
+            $this->app->register($provider);
+        }
+    }
+
+    /**
+     * Build admin menus
+     *
+     * @return void
+     */
+    protected function registerMenus()
+    {
+        $this->app->singleton('reduvel.admin.menu', function ($app) {
+            return $this->app->make('menu')->make('ReduvelAdminMenu', function (Builder $menu) {
+                return $menu;
+            });
+        });
     }
 
     /**
@@ -118,10 +154,6 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected function registerConfigurations()
     {
-        $this->mergeConfigFrom(
-            $this->packagePath('config/config.php'),
-            'reduvel.admin'
-        );
         $this->publishes([
             $this->packagePath('config/config.php') => config_path('reduvel/admin.php'),
         ], 'config');

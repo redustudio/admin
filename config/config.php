@@ -14,5 +14,9 @@ return [
 
     'user' => [
         'model' => User::class
+    ],
+
+    'providers' => [
+        Lavary\Menu\ServiceProvider::class
     ]
 ];

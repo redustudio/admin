@@ -38,7 +38,9 @@ Coming soon
 
 ## Usage
 
-Coming soon
+### Events
+
+### Menus
 
 ## About Reduvel
 
