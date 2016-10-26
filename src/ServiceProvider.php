@@ -31,7 +31,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->mergeConfigFrom($this->packagePath('config/config.php'), 'reduvel.admin');
 
         $this->registerProviders();
-        $this->registerMenus();
+        $this->bindMenu();
     }
 
     /**
@@ -57,19 +57,6 @@ class ServiceProvider extends BaseServiceProvider
     }
 
     /**
-     * Register the package commands
-     *
-     * @return void
-     */
-    protected function registerCommands()
-    {
-        $this->commands([
-            PublishCommand::class,
-            InstallCommand::class
-        ]);
-    }
-
-    /**
      * Register the package providers
      *
      * @return void
@@ -84,17 +71,30 @@ class ServiceProvider extends BaseServiceProvider
     }
 
     /**
-     * Build admin menus
+     * Bind menu
      *
      * @return void
      */
-    protected function registerMenus()
+    protected function bindMenu()
     {
         $this->app->singleton('reduvel.admin.menu', function ($app) {
             return $this->app->make('menu')->make('ReduvelAdminMenu', function (Builder $menu) {
                 return $menu;
             });
         });
+    }
+
+    /**
+     * Register the package commands
+     *
+     * @return void
+     */
+    protected function registerCommands()
+    {
+        $this->commands([
+            PublishCommand::class,
+            InstallCommand::class
+        ]);
     }
 
     /**

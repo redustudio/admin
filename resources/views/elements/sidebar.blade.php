@@ -5,19 +5,13 @@
 
     <nav>
         <ul class="nav mb-1" id="navmenu">
-            <li class="profile card panel">
-                <a data-toggle="collapse" data-parent="#navmenu" class="truncate" href="#profileCollapse" aria-expanded="false" aria-controls="profileCollapse">
+            <li class="profile card">
+                <a data-toggle="collapse" data-parent="#navmenu" class="truncate" href="#profile-collapse" aria-expanded="false" aria-controls="profile-collapse">
                     <img src="{{ Avatar::create(strtoupper(auth()->user()->name))->toBase64() }}" class="avatar img-fluid rounded-circle" alt="user" title="user">
                     <span>{{ auth()->user()->name }}</span>
                 </a>
 
-                <ul class="collapse sub-menu" id="profileCollapse">
-                    <li>
-                        <a href="#">Profile</a>
-                    </li>
-                    <li>
-                        <a href="#">Update Password</a>
-                    </li>
+                <ul class="collapse sub-menu" id="profile-collapse">
                     <li>
                         <a href="{{ route('reduvel-admin:logout') }}" class="text-danger">
                             Logout
@@ -29,16 +23,16 @@
 
         <p class="nav-title">NAVIGATION</p>
         <ul class="nav" id="navmenu">
-        @foreach (app('reduvel.admin.menu')->roots() as $menu)
-            <li class="{{ $menu->isActive ? 'active' : '' }}{{ $menu->hasChildren() ? 'card panel' : '' }}">
+        @foreach (app('reduvel.admin.menu')->sortBy('order')->roots() as $menu)
+            <li class="{{ $menu->isActive ? 'active' : '' }}{{ $menu->hasChildren() ? ' card' : '' }}">
                 @if ($menu->hasChildren())
-                    <a data-toggle="collapse" class="truncate" data-parent="#navmenu" href="#{{ $menu->id }}-collapse" aria-expanded="false" aria-controls="{{ $menu->id }}-collapse">
+                    <a data-toggle="collapse" class="truncate" data-parent="#navmenu" href="#collapse-{{ $menu->id }}" aria-expanded="false" aria-controls="collapse-{{ $menu->id }}">
                         <i class="{{ $menu->data('icon') }}"></i> {{ $menu->title }}
                     </a>
 
-                    <ul class="collapse sub-menu" id="{{ $menu->id }}-collapse">
+                    <ul class="collapse {{ $menu->isActive ? 'in' : '' }} sub-menu" id="collapse-{{ $menu->id }}">
                     @foreach ($menu->children() as $subMenu)
-                        <li>
+                        <li @if($subMenu->isActive) class="active" @endif>
                             <a href="{{ $subMenu->url() }}">{{ $subMenu->title }}</a>
                         </li>
                     @endforeach
