@@ -34,13 +34,33 @@ This artisan command for running migrations and create user root.
 
 ## Configuration
 
-Coming soon
+You can overide config file after you published it on `config/reduvel/admin.php`.
 
 ## Usage
 
-### Events
+### Menu
+Reduvel Admin using [lavary/laravel-menu][laravel-menu-link] for menu management.
 
-### Menus
+Register menu for display it on sidebar menu
+
+```php
+// single menu
+app('reduvel.admin.menu')->add('Dashboard', ['route' => 'your.route.name'])
+    ->data('icon', 'fa fa-dashboard')
+    ->data('order', 1); // for sorting menu
+
+// menu with sub menu
+$menu = app('reduvel.admin.menu')->add('Menu', '#')
+    ->data('icon', 'fa fa-xxx')
+    ->data('order', 2);
+
+$menu->add('Sub Menu 1', ['route' => 'your.route.name']);
+$menu->add('Sub Menu 2', ['route' => 'your.route.name']);
+```
+
+You can write it on Service Provider or Controller constructor.
+
+### Events
 
 ## About Reduvel
 
@@ -66,3 +86,4 @@ The [MIT][mitlink] License (MIT). Please see [License File](LICENSE.md) for more
 [mailto]: mailto:redustudio@gmail.com
 [fbpage]: https://www.facebook.com/Redustudio/
 [mitlink]: http://opensource.org/licenses/MIT
+[laravel-menu-link]: https://github.com/lavary/laravel-menu
