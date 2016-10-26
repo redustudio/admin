@@ -65,11 +65,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected function registerProviders()
     {
-        $providers = config('reduvel.admin.providers');
-
-        foreach ($providers as $provider) {
-            $this->app->register($provider);
-        }
+        $this->app->register(\Lavary\Menu\ServiceProvider::class);
     }
 
     /**

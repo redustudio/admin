@@ -2,8 +2,8 @@
 use App\User;
 
 return [
-    // automatic loading of routes through main service provider
     'route' => [
+        // automatic loading of routes through main service provider
         'enabled' => true,
 
         'web' => [
@@ -13,10 +13,7 @@ return [
     ],
 
     'user' => [
+        // for create user root 
         'model' => User::class
-    ],
-
-    'providers' => [
-        Lavary\Menu\ServiceProvider::class
     ]
 ];
