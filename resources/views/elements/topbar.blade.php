@@ -7,12 +7,12 @@
         </ul>
 
         <a class="navbar-brand" href="#">
-            Page Name
+            {{ $pageTitle or 'Page Title' }}
         </a>
 
         <ul class="nav navbar-nav float-xs-right">
             <li class="nav-item">
-                <a href="{{ route('reduvel-admin:logout') }}" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Logout">
+                <a href="{{ route('reduvel-admin:logout') }}" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="@lang('reduvel-admin::fields.logout')">
                     <i class="fa fa-sign-out"></i>
                 </a>
             </li>

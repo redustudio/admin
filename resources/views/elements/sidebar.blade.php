@@ -14,14 +14,15 @@
                 <ul class="collapse sub-menu" id="profile-collapse">
                     <li>
                         <a href="{{ route('reduvel-admin:logout') }}" class="text-danger">
-                            Logout
+                            @lang('reduvel-admin::fields.logout')
                         </a>
                     </li>
                 </ul>
             </li>
         </ul>
 
-        <p class="nav-title">NAVIGATION</p>
+        <p class="nav-title">@lang('reduvel-admin::page.navigation')</p>
+
         <ul class="nav" id="navmenu">
         @foreach (app('reduvel.admin.menu')->sortBy('order')->roots() as $menu)
             <li class="{{ $menu->isActive ? 'active' : '' }}{{ $menu->hasChildren() ? ' card' : '' }}">

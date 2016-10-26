@@ -54,6 +54,8 @@ class ServiceProvider extends BaseServiceProvider
         if (! $this->app->routesAreCached() && config('reduvel.admin.route.enabled')) {
             $this->registerRoutes();
         }
+
+        $this->app->make('view')->share('pageTitle', trans('reduvel-admin::page.default_title'));
     }
 
     /**

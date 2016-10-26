@@ -5405,6 +5405,7 @@ body {
   font-size: 11px !important;
   padding: 5px 24px;
   margin-bottom: 0 !important;
+  text-transform: uppercase;
 }
 
 #sidebar-wrapper .nav, #sidebar-wrapper .sub-menu {

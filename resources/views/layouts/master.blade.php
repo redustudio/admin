@@ -1,5 +1,7 @@
 @extends('reduvel-admin::layouts.base')
 
+@section('title', $pageTitle . ' | ' . config('app.name'))
+
 @section('body')
     <div id="wrapper">
         @include('reduvel-admin::elements.sidebar')
