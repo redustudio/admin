@@ -11,10 +11,10 @@ class Controller extends BaseController
         app('reduvel.admin.menu')->add('Dashboard', ['route' => 'reduvel-admin:index'])
             ->data('icon', 'fa fa-dashboard');
 
-        app('reduvel.admin.menu')->add('Articles', ['url' => url('reduvel-admin:index')])
+        app('reduvel.admin.menu')->add('Articles', ['url' => 'articles'])
             ->data('icon', 'fa fa-files-o');
 
-        $samplePage = app('reduvel.admin.menu')->add('Sample Page', ['route' => 'reduvel-admin:index'])
+        $samplePage = app('reduvel.admin.menu')->add('Sample Page')
             ->id('sample-page')
             ->data('icon', 'fa fa-file');
 

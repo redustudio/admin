@@ -30,7 +30,7 @@
         <p class="nav-title">NAVIGATION</p>
         <ul class="nav" id="navmenu">
         @foreach (app('reduvel.admin.menu')->roots() as $menu)
-            <li @if($menu->hasChildren()) class="card panel" @endif>
+            <li class="{{ $menu->isActive ? 'active' : '' }}{{ $menu->hasChildren() ? 'card panel' : '' }}">
                 @if ($menu->hasChildren())
                     <a data-toggle="collapse" class="truncate" data-parent="#navmenu" href="#{{ $menu->id }}-collapse" aria-expanded="false" aria-controls="{{ $menu->id }}-collapse">
                         <i class="{{ $menu->data('icon') }}"></i> {{ $menu->title }}
