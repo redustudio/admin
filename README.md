@@ -2,6 +2,8 @@
 
 Admin panel for your Laravel App.
 
+![Reduvel Admin][screenshot]
+
 ## Installation
 
 This package requires [Laravel 5.3][laravel-install-link] to install.
@@ -79,7 +81,7 @@ Set title for page
 view()->share('pageTitle', 'Dashboard');
 ```
 
-Write it on every Controller method which displays the page or passing `pageTitle` on view.
+Write it on every Controller method which displays the page or passing `pageTitle` on view file.
 
 ```blade
 @extends('reduvel-admin::layouts.master', ['pageTitle' => 'Dashboard'])
