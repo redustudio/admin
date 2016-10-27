@@ -8,11 +8,11 @@ Admin panel for your Laravel App.
 
 This package requires [Laravel 5.3][laravel-install-link] to install.
 
-In order to install Reduvel Admin, just add
+In order to install Reduvel Admin, just enter on your terminal
 
-    "reduvel/admin": "dev-master"
-
-to your composer.json, then run `composer install` or `composer update`.
+```bash
+$ composer require reduvel/admin
+```
 
 After installed,  add the ServiceProvider to the providers array in `config/app.php`
 
