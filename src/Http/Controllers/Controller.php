@@ -17,6 +17,6 @@ class Controller extends BaseController
     {
         view()->share('pageTitle', 'Dashboard');
 
-        return view('reduvel-admin::layouts.master');
+        return view('reduvel-admin::dashboard');
     }
 }
