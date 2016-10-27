@@ -66,6 +66,7 @@ class ServiceProvider extends BaseServiceProvider
     protected function registerProviders()
     {
         $this->app->register(\Lavary\Menu\ServiceProvider::class);
+        $this->app->register(\Laravolt\Avatar\ServiceProvider::class);
     }
 
     /**

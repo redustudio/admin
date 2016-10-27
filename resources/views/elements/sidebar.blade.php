@@ -7,7 +7,7 @@
         <ul class="nav mb-1" id="navmenu">
             <li class="profile card">
                 <a data-toggle="collapse" data-parent="#navmenu" class="truncate" href="#profile-collapse" aria-expanded="false" aria-controls="profile-collapse">
-                    <img src="{{ Avatar::create(strtoupper(auth()->user()->name))->toBase64() }}" class="avatar img-fluid rounded-circle" alt="user" title="user">
+                    <img src="{{ app('avatar')->create(strtoupper(auth()->user()->name))->toBase64() }}" class="avatar img-fluid rounded-circle" alt="user" title="user">
                     <span>{{ auth()->user()->name }}</span>
                 </a>
 
