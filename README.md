@@ -110,7 +110,7 @@ The [MIT][mitlink] License (MIT). Please see [License File](LICENSE.md) for more
 
 
 [laravel-install-link]: https://laravel.com/docs/5.3#installation
-[screenshot]: admin.png
+[screenshot]: reduvel-admin.png
 [homepage]: http://redustudio.com/
 [mailto]: mailto:redustudio@gmail.com
 [fbpage]: https://www.facebook.com/Redustudio/
