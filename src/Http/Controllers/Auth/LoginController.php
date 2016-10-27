@@ -85,7 +85,8 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         // fire event when user logout
-        event('reduvel.admin.logout', [auth()->user()]);
+        $user = auth()->user();
+        event('reduvel.admin.logout', [$user]);
 
         $this->guard()->logout();
 

@@ -14,7 +14,7 @@
                                 <label class="form-control-label" for="email">
                                     @lang('reduvel-admin::fields.email')
                                 </label>
-                                <input type="text" name="email" class="form-control"/>
+                                <input type="text" name="email" class="form-control" value="{{ old('email') }}"/>
 
                                 @if ($errors->has('email'))
                                     <div class="form-control-feedback">
