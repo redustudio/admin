@@ -32,6 +32,8 @@ $ php artisan reduvel:admin:install
 
 This artisan command for running migrations and create user root.
 
+Now your admin is ready to use, you can see at http://localhost:8000/dashboard via `php artisan serve`.
+
 ## Configuration
 
 You can overide config file after you published it on `config/reduvel/admin.php`.
@@ -77,7 +79,15 @@ Set title for page
 view()->share('pageTitle', 'Dashboard');
 ```
 
-You can write it on every Controller method which displays the page.
+Write it on every Controller method which displays the page or passing `pageTitle` on view.
+
+```blade
+@extends('reduvel-admin::layouts.master', ['pageTitle' => 'Dashboard'])
+
+@section('content')
+    // your html
+@endsection
+```
 
 ## About Reduvel
 
