@@ -118,9 +118,9 @@ reduvel.admin.logout | $user
 
 ## Todo
 
-- [] Profile
-- [] Setting
-- [] Test
+- [ ] Profile
+- [ ] Setting
+- [ ] Test
 
 ## About Reduvel
 
