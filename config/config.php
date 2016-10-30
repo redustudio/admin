@@ -13,7 +13,7 @@ return [
     ],
 
     'user' => [
-        // for create user root 
+        // for create user root
         'model' => User::class
     ]
 ];
