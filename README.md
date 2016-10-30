@@ -6,8 +6,6 @@ Admin panel for your Laravel App.
 
 ## Installation
 
-This package requires [Laravel 5.3][laravel-install-link] to install.
-
 In order to install Reduvel Admin, just enter on your terminal
 
 ```bash
@@ -64,18 +62,40 @@ $menu->add('Sub Menu 2', ['route' => 'your.route.name']);
 
 You can write it on Service Provider or Controller constructor.
 
-### Events
+### View
 
-You can use this event for example recording user activity, call other functionality, etc.
+`reduvel-admin::layouts.master` is master layout from this package.
 
-Event Name | Parameter(s)
---- | ---
-reduvel.admin.login | $user
-reduvel.admin.logout | $user
+`content` is section for your html.
 
-### Others
+`style-head` is section for include style files (css) in `head` html tag.
 
-Set title for page
+`script-head` is section for include script files (js) in `head` html tag.
+
+`script-end` is section for include script files (js) at the end of `body` tag.
+
+Example
+
+```blade
+@extends('reduvel-admin::layouts.master')
+
+@section('style-head')
+    @parent
+    // css files or inline css
+@endsection
+
+@section('content')
+    // your html
+@endsection
+
+@section('script-end')
+    @parent
+    // script files or inline script
+@endsection
+
+```
+
+Page Title
 
 ```php
 view()->share('pageTitle', 'Dashboard');
@@ -85,11 +105,22 @@ Write it on every Controller method which displays the page or passing `pageTitl
 
 ```blade
 @extends('reduvel-admin::layouts.master', ['pageTitle' => 'Dashboard'])
-
-@section('content')
-    // your html
-@endsection
 ```
+
+### Events
+
+You can use this event for example recording user activity, call other functionality, etc.
+
+Event Name | Parameter(s)
+--- | ---
+reduvel.admin.login | $user
+reduvel.admin.logout | $user
+
+## Todo
+
+- [] Profile
+- [] Setting
+- [] Test
 
 ## About Reduvel
 
@@ -109,7 +140,6 @@ Just Contact Us At:
 The [MIT][mitlink] License (MIT). Please see [License File](LICENSE.md) for more information.
 
 
-[laravel-install-link]: https://laravel.com/docs/5.3#installation
 [screenshot]: reduvel-admin.png
 [homepage]: http://redustudio.com/
 [mailto]: mailto:redustudio@gmail.com

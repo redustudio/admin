@@ -13,6 +13,7 @@
         <link rel="canonical" href="{{ config('app.url') }}">
 
         @yield('style-head')
+        @yield('script-head')
     </head>
     <body>
         @yield('body')
