@@ -9,7 +9,7 @@ Admin panel for your Laravel App.
 In order to install Reduvel Admin, just enter on your terminal
 
 ```bash
-$ composer require reduvel/admin
+$ composer require redustudio/reduvel-admin
 ```
 
 After installed,  add the ServiceProvider to the providers array in `config/app.php`
